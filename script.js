@@ -146,13 +146,15 @@ for(i = 0; i < sentenceArray.length; i++){
 // What was the average percentage grade in the class?
 
 var grades = [92, 91, 75, 66, 52, 90, 83, 85, 64, 90, 72, 88, 77, 98, 100, 73, 92];
-var count = []
 var fCount = 0;
 var dCount = 0;
 var cCount = 0;
 var bCount = 0;
 var aCount = 0;
-
+var mostCommonCount = 0;
+var mostCommonGrade = "";
+var gradeSum = 0;
+var gradeAverage = 0;
 
 for(i = 0; i < grades.length; i++){
     if (grades[i] >= 0 && grades[i] <= 69) {
@@ -168,8 +170,37 @@ for(i = 0; i < grades.length; i++){
     }
 }
 
+for(i = 0; i < grades.length; i++){
+    if(mostCommonCount < fCount){
+        mostCommonCount = fCount
+        mostCommonGrade = "F"
+    } if(mostCommonCount < dCount){
+        mostCommonCount = dCount
+        mostCommonGrade = "D"
+    } if(mostCommonCount < cCount){
+        mostCommonCount = cCount
+        mostCommonGrade = "C"
+    } if(mostCommonCount < bCount){
+        mostCommonCount = bCount
+        mostCommonGrade = "B"
+    } if(mostCommonCount < aCount){
+        mostCommonCount = aCount
+        mostCommonGrade = "A"
+    }
+}
+
+for(i = 0; i < grades.length; i++){
+    gradeSum += grades[i]
+}
+
+gradeAverage = gradeSum / grades.length;
+
 console.log(`There were ${aCount} A's in the class`)
 console.log(`There were ${bCount} B's in the class`)
+console.log(`The most common letter grade is ${mostCommonGrade}`)
+console.log(`The average percentage grade is ${gradeAverage}`)
+
+
 
 
 
