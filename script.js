@@ -200,10 +200,6 @@ console.log(`There were ${bCount} B's in the class`)
 console.log(`The most common letter grade is ${mostCommonGrade}`)
 console.log(`The average percentage grade is ${gradeAverage}`)
 
-
-
-
-
 // Challenges
 // Challenge #1
 // Use the data from the Yahoo weather API to print a ten day forecast.
@@ -216,5 +212,201 @@ console.log(`The average percentage grade is ${gradeAverage}`)
 // Challenge #2
 // What is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder? (Hint: you might need the modulus operator.)
 
+
+var weatherData = {
+    "query": {
+     "count": 1,
+     "created": "2018-12-06T20:52:22Z",
+     "lang": "en-US",
+     "results": {
+      "channel": {
+       "units": {
+        "distance": "mi",
+        "pressure": "in",
+        "speed": "mph",
+        "temperature": "F"
+       },
+       "title": "Yahoo! Weather - Nome, AK, US",
+       "link": "http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2460286/",
+       "description": "Yahoo! Weather for Nome, AK, US",
+       "language": "en-us",
+       "lastBuildDate": "Thu, 06 Dec 2018 11:52 AM AKST",
+       "ttl": "60",
+       "location": {
+        "city": "Nome",
+        "country": "United States",
+        "region": " AK"
+       },
+       "wind": {
+        "chill": "14",
+        "direction": "68",
+        "speed": "36"
+       },
+       "atmosphere": {
+        "humidity": "90",
+        "pressure": "989.0",
+        "rising": "0",
+        "visibility": "11.0"
+       },
+       "astronomy": {
+        "sunrise": "11:38 am",
+        "sunset": "4:7 pm"
+       },
+       "image": {
+        "title": "Yahoo! Weather",
+        "width": "142",
+        "height": "18",
+        "link": "http://weather.yahoo.com",
+        "url": "http://l.yimg.com/a/i/brand/purplelogo//uh/us/news-wea.gif"
+       },
+       "item": {
+        "title": "Conditions for Nome, AK, US at 11:00 AM AKST",
+        "lat": "64.499474",
+        "long": "-165.405792",
+        "link": "http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2460286/",
+        "pubDate": "Thu, 06 Dec 2018 11:00 AM AKST",
+        "condition": {
+         "code": "15",
+         "date": "Thu, 06 Dec 2018 11:00 AM AKST",
+         "temp": "28",
+         "text": "Blowing Snow"
+        },
+        "forecast": [
+         {
+          "code": "16",
+          "date": "06 Dec 2018",
+          "day": "Thu",
+          "high": "29",
+          "low": "25",
+          "text": "Snow"
+         },
+         {
+          "code": "26",
+          "date": "07 Dec 2018",
+          "day": "Fri",
+          "high": "27",
+          "low": "22",
+          "text": "Cloudy"
+         },
+         {
+          "code": "28",
+          "date": "08 Dec 2018",
+          "day": "Sat",
+          "high": "22",
+          "low": "8",
+          "text": "Mostly Cloudy"
+         },
+         {
+          "code": "34",
+          "date": "09 Dec 2018",
+          "day": "Sun",
+          "high": "7",
+          "low": "-11",
+          "text": "Mostly Sunny"
+         },
+         {
+          "code": "28",
+          "date": "10 Dec 2018",
+          "day": "Mon",
+          "high": "3",
+          "low": "-11",
+          "text": "Mostly Cloudy"
+         },
+         {
+          "code": "28",
+          "date": "11 Dec 2018",
+          "day": "Tue",
+          "high": "10",
+          "low": "2",
+          "text": "Mostly Cloudy"
+         },
+         {
+          "code": "26",
+          "date": "12 Dec 2018",
+          "day": "Wed",
+          "high": "9",
+          "low": "5",
+          "text": "Cloudy"
+         },
+         {
+          "code": "28",
+          "date": "13 Dec 2018",
+          "day": "Thu",
+          "high": "14",
+          "low": "8",
+          "text": "Mostly Cloudy"
+         },
+         {
+          "code": "30",
+          "date": "14 Dec 2018",
+          "day": "Fri",
+          "high": "13",
+          "low": "-3",
+          "text": "Partly Cloudy"
+         },
+         {
+          "code": "30",
+          "date": "15 Dec 2018",
+          "day": "Sat",
+          "high": "7",
+          "low": "-3",
+          "text": "Partly Cloudy"
+         }
+        ],
+        "description": "<![CDATA[<img src=\"http://l.yimg.com/a/i/us/we/52/15.gif\"/>\n<BR />\n<b>Current Conditions:</b>\n<BR />Blowing Snow\n<BR />\n<BR />\n<b>Forecast:</b>\n<BR /> Thu - Snow. High: 29Low: 25\n<BR /> Fri - Cloudy. High: 27Low: 22\n<BR /> Sat - Mostly Cloudy. High: 22Low: 8\n<BR /> Sun - Mostly Sunny. High: 7Low: -11\n<BR /> Mon - Mostly Cloudy. High: 3Low: -11\n<BR />\n<BR />\n<a href=\"http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2460286/\">Full Forecast at Yahoo! Weather</a>\n<BR />\n<BR />\n<BR />\n]]>",
+        "guid": {
+         "isPermaLink": "false"
+        }
+       }
+      }
+     }
+    }
+   }
+
+for(var i = 0; i < 10; i++){
+    var tenDayForecastString = `On ${weatherData.query.results.channel.item.forecast[i].day}, ${weatherData.query.results.channel.item.forecast[i].date} the low will be ${weatherData.query.results.channel.item.forecast[i].low} there will be a high of ${weatherData.query.results.channel.item.forecast[i].high} and it will be ${weatherData.query.results.channel.item.forecast[i].text.toLowerCase()}.`
+
+    if (weatherData.query.results.channel.item.forecast[i].high > 85) {
+        tenDayForecastString += " Stay cool out there, folks!"
+    } else if (weatherData.query.results.channel.item.forecast[i].high < 40) {
+        tenDayForecastString += " Don't forget to bundle up!"
+    } else if (weatherData.query.results.channel.item.forecast[i].low < 20) {
+        tenDayForecastString += " Temperatures will be dangerously low!"
+    }
+
+    console.log(tenDayForecastString)
+}
+
+// Challenge #2
+// What is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder? (Hint: you might need the modulus operator.)
+
+//I'm assuming you want numbers larger than 0 for this.
+
+var lowestInt = 0;
+var count = 0;
+
+for(i = 1; count < 10; i++){
+    count = 0
+    for(k = 1; k < 11; k++){
+        if (i % k === 0) {
+            count++
+        }
+    }
+    lowestInt = i
+}
+console.log(lowestInt)
+
 // Challenge #3
 // Write a Fibonacci number generator that outputs the numbers in the series that are less than 500.
+var startInt = 1;
+var holderInt = 0;
+var sum = 0;
+
+for(var i = 0; i < 500; i = sum){
+    sum = startInt + holderInt
+    if(sum < 500){
+        console.log(sum)
+    }   
+    startInt = holderInt
+    holderInt = sum
+}
